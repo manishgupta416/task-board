@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
-import { DataContext } from "./context/DataContext";
-import { getAllTask } from "./services/DataServices";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import TaskBoard from "./pages/TaskBoard/TaskBoard";
 
 const App = () => {
-  const { task } = useContext(DataContext);
-
-  return <div>{task}</div>;
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<TaskBoard />} />
+      </Routes>
+    </div>
+  );
 };
 
 export default App;
