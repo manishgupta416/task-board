@@ -163,7 +163,7 @@ const TaskBoard = () => {
               onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
             />
           </div>
-          <div className="flx sz">
+          <div className="flx sz colum">
             Priority :{" "}
             <select
               name="Priority-filter"

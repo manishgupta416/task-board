@@ -24,10 +24,10 @@
   gap: 10px;
   display: flex;
   /* width: 33%; */
-  /* justify-content: center; */
+  justify-content: center;
   height: 100%;
   gap: 10px;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   flex-basis: 100px;
 }
 .flx-row {
@@ -68,4 +68,18 @@
 }
 .cursor {
   cursor: pointer;
+}
+@media screen and (max-width: 657px) {
+  .spbtw {
+    flex-direction: column;
+    gap: 20px;
+  }
+  body {
+    font-size: large;
+    font-weight: bold;
+  }
+  .colum {
+    display: flex;
+    flex-direction: column;
+  }
 }
