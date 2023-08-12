@@ -3,9 +3,16 @@ import "./TaskBoard.css";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import { DataContext } from "../../context/DataContext";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-
+import { CiLight } from "react-icons/ci";
+import { MdDarkMode } from "react-icons/md";
 const TaskBoard = () => {
-  const { dataState } = useContext(DataContext);
+  const {
+    dataState,
+    handleDarkMode,
+    theme,
+    isDarkMode,
+    getPriorityBadgeColor,
+  } = useContext(DataContext);
   const sampleData = {
     Ready: { id: 1, title: "Ready", task: [] },
     InProgress: { id: 2, title: "In Progress", task: [] },
@@ -132,51 +139,66 @@ const TaskBoard = () => {
   };
 
   console.log(filterTasks);
-  // const [isDarkMode, setIsDarkMode] = useState(false);
-  // const handleDarkMode = () => {
-  //   setIsDarkMode(!isDarkMode);
-  // };
+  const getStyle = (title) => {
+    return getPriorityBadgeColor(title);
+  };
   return (
-    <div className="main-container">
-      <div className="heading">
-        <h1>Task Board</h1>
-        {/* <button onClick={handleDarkMode}>
-          {isDarkMode ? "Light" : "Dark"}
-        </button> */}
+    <div
+      className="main-container"
+      style={{ backgroundColor: theme.background, color: theme.text }}
+    >
+      <div className="heade flx-col">
+        <div className="heading flx-row ">
+          <h1>Task Board</h1>
+          <span onClick={handleDarkMode} className="font-sz">
+            {isDarkMode ? <CiLight /> : <MdDarkMode />}
+          </span>
+        </div>
+        <div className="spbtw">
+          <div>
+            <input
+              type="text"
+              className="inp"
+              placeholder="search"
+              onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
+            />
+          </div>
+          <div className="flx sz">
+            Priority :{" "}
+            <select
+              name="Priority-filter"
+              id="Priority-filter"
+              className="cursor"
+              onChange={(e) => setPriorityValue(e.target.value.toLowerCase())}
+            >
+              <option value="">Select</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            Assignee :{" "}
+            <select
+              name="assignee-filter"
+              id="assignee-filter"
+              className="cursor"
+              onChange={(e) => setAssigneeValue(e.target.value.toLowerCase())}
+            >
+              <option value="">Select</option>
+              <option value="High">Alice</option>
+              <option value="Bob">Bob</option>
+              <option value="Charlie">Charlie</option>
+              <option value="David">David</option>
+              <option value="Eve">Eve</option>
+              <option value="Frank">Frank</option>
+              <option value="Henry">Henry</option>
+              <option value="Ivy">Ivy</option>
+              <option value="Grace">Grace</option>
+              <option value="Jack">Jack</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <input
-        type="text"
-        onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
-      />
-      Priority :{" "}
-      <select
-        name="Priority-filter"
-        id="Priority-filter"
-        onChange={(e) => setPriorityValue(e.target.value.toLowerCase())}
-      >
-        <option value="">Select</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
-      Assignee :{" "}
-      <select
-        name="assignee-filter"
-        id="assignee-filter"
-        onChange={(e) => setAssigneeValue(e.target.value.toLowerCase())}
-      >
-        <option value="">Select</option>
-        <option value="High">Alice</option>
-        <option value="Bob">Bob</option>
-        <option value="Charlie">Charlie</option>
-        <option value="David">David</option>
-        <option value="Eve">Eve</option>
-        <option value="Frank">Frank</option>
-        <option value="Henry">Henry</option>
-        <option value="Ivy">Ivy</option>
-        <option value="Grace">Grace</option>
-        <option value="Jack">Jack</option>
-      </select>
+
       <div className="layout">
         <div className="col">
           <DragDropContext
@@ -184,12 +206,20 @@ const TaskBoard = () => {
             className="layout"
           >
             {Object.entries(columns).map(([columnId, column], index) => {
+              console.log(column, "collllllll");
               if (!column.task) {
                 return null;
               }
               return (
                 <div key={column.id} className="layout">
-                  <h2>{column.title}</h2>
+                  <h2
+                    style={{
+                      borderBottom: `4px solid ${getStyle(column.title)} `,
+                      color: `${getStyle(column.title)} `,
+                    }}
+                  >
+                    {column.title} ({column.task.length})
+                  </h2>
                   <div>
                     <Droppable
                       droppableId={columnId}

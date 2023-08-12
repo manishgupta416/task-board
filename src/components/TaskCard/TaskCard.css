@@ -18,3 +18,9 @@
   justify-content: space-around;
   /* box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1); */
 }
+.border {
+  border-radius: 44%;
+  font-size: large;
+  padding: 5px 10px;
+  border: 2px solid white;
+}
