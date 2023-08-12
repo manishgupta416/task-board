@@ -2,6 +2,13 @@ import React from "react";
 import "./TaskCard.css";
 import { Draggable } from "react-beautiful-dnd";
 const TaskCard = ({ task, index }) => {
+  const getItemStyle = (isDragging, draggableStyle) => ({
+    userSelect: "none",
+    padding: "10px",
+    margin: "6px",
+    background: isDragging ? "lightgreen" : "lightgrey",
+    ...draggableStyle,
+  });
   return (
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => {
@@ -11,6 +18,10 @@ const TaskCard = ({ task, index }) => {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            style={getItemStyle(
+              snapshot.isDragging,
+              provided.draggableProps.style
+            )}
           >
             <div className="task-info flex">
               <div className="task-no">{task?.name}</div>

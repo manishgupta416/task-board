@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import "./TaskBoard.css";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import { DataContext } from "../../context/DataContext";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const TaskBoard = () => {
   const { dataState } = useContext(DataContext);
   const sampleData = {
     Ready: { id: 1, title: "Ready", task: [] },
-    "In Progress": { id: 2, title: "InProgress", task: [] },
+    InProgress: { id: 2, title: "In Progress", task: [] },
     Testing: { id: 3, title: "Testing", task: [] },
     Done: { id: 4, title: "Done", task: [] },
   };
@@ -100,7 +100,7 @@ const TaskBoard = () => {
           >
             {Object.entries(columns).map(([columnId, column], index) => {
               if (!column.task) {
-                return null; // Skip rendering for missing statuses
+                return null;
               }
               return (
                 <div key={column.id} className="layout">
@@ -116,6 +116,7 @@ const TaskBoard = () => {
                           <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
+                            style={getListStyle(snapshot.isDraggingOver)}
                           >
                             {column.task.map((item, index) => {
                               {
