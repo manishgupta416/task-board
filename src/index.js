@@ -6,11 +6,11 @@ import { DataProvider } from "./context/DataContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Router>
-      <DataProvider>
-        <App />
-      </DataProvider>
-    </Router>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Router>
+    <DataProvider>
+      <App />
+    </DataProvider>
+  </Router>
+  // </React.StrictMode>
 );
