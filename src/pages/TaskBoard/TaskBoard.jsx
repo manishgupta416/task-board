@@ -14,30 +14,62 @@ const TaskBoard = () => {
   };
 
   const [columns, setColumns] = useState(sampleData);
+  const [searchInput, setSearchInput] = useState("");
+  const [priorityValue, setPriorityValue] = useState("");
+  const [assigneeValue, setAssigneeValue] = useState("");
 
   useEffect(() => {
+    const filteredTasks = {
+      Ready: dataState?.data?.filter((task) => task?.status === "Ready"),
+      InProgress: dataState?.data?.filter(
+        (task) => task?.status === "In Progress"
+      ),
+      Testing: dataState?.data?.filter((task) => task?.status === "Testing"),
+      Done: dataState?.data?.filter((task) => task?.status === "Done"),
+    };
+
     const updatedColumns = {
       ...columns,
       Ready: {
         ...columns.Ready,
-        task: dataState?.data?.filter((task) => task?.status === "Ready"),
+        task: filterTasks(
+          filteredTasks.Ready,
+          searchInput,
+          priorityValue,
+          assigneeValue
+        ),
       },
       InProgress: {
         ...columns.InProgress,
-        task: dataState?.data?.filter((task) => task?.status === "In Progress"),
+        task: filterTasks(
+          filteredTasks.InProgress,
+          searchInput,
+          priorityValue,
+          assigneeValue
+        ),
       },
       Testing: {
         ...columns.Testing,
-        task: dataState?.data?.filter((task) => task?.status === "Testing"),
+        task: filterTasks(
+          filteredTasks.Testing,
+          searchInput,
+          priorityValue,
+          assigneeValue
+        ),
       },
       Done: {
         ...columns.Done,
-        task: dataState?.data?.filter((task) => task?.status === "Done"),
+        task: filterTasks(
+          filteredTasks.Done,
+          searchInput,
+          priorityValue,
+          assigneeValue
+        ),
       },
     };
 
     setColumns(updatedColumns);
-  }, [dataState]);
+  }, [dataState.data, searchInput, priorityValue, assigneeValue]);
 
   const getListStyle = (isDraggingOver) => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
@@ -87,11 +119,64 @@ const TaskBoard = () => {
     }
   };
   console.log(columns);
+
+  const filterTasks = (tasks, searchValue, priorityValue, assigneeValue) => {
+    return tasks.filter(
+      (task) =>
+        task.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+        (!priorityValue ||
+          task.priority.toLowerCase() === priorityValue.toLowerCase()) &&
+        (!assigneeValue ||
+          task.assignee.toLowerCase() === assigneeValue.toLowerCase())
+    );
+  };
+
+  console.log(filterTasks);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+  // const handleDarkMode = () => {
+  //   setIsDarkMode(!isDarkMode);
+  // };
   return (
     <div className="main-container">
       <div className="heading">
         <h1>Task Board</h1>
+        {/* <button onClick={handleDarkMode}>
+          {isDarkMode ? "Light" : "Dark"}
+        </button> */}
       </div>
+      <input
+        type="text"
+        onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
+      />
+      Priority :{" "}
+      <select
+        name="Priority-filter"
+        id="Priority-filter"
+        onChange={(e) => setPriorityValue(e.target.value.toLowerCase())}
+      >
+        <option value="">Select</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      Assignee :{" "}
+      <select
+        name="assignee-filter"
+        id="assignee-filter"
+        onChange={(e) => setAssigneeValue(e.target.value.toLowerCase())}
+      >
+        <option value="">Select</option>
+        <option value="High">Alice</option>
+        <option value="Bob">Bob</option>
+        <option value="Charlie">Charlie</option>
+        <option value="David">David</option>
+        <option value="Eve">Eve</option>
+        <option value="Frank">Frank</option>
+        <option value="Henry">Henry</option>
+        <option value="Ivy">Ivy</option>
+        <option value="Grace">Grace</option>
+        <option value="Jack">Jack</option>
+      </select>
       <div className="layout">
         <div className="col">
           <DragDropContext
@@ -119,9 +204,6 @@ const TaskBoard = () => {
                             style={getListStyle(snapshot.isDraggingOver)}
                           >
                             {column.task.map((item, index) => {
-                              {
-                                /* console.log(item); */
-                              }
                               return (
                                 <div>
                                   <TaskCard

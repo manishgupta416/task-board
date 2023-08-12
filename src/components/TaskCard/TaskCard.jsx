@@ -9,6 +9,20 @@ const TaskCard = ({ task, index }) => {
     background: isDragging ? "lightgreen" : "lightgrey",
     ...draggableStyle,
   });
+
+  const getPriorityBadgeColor = (priority) => {
+    switch (priority) {
+      case "High":
+        return "red";
+      case "Medium":
+        return "yellow";
+      case "Low":
+        return "green";
+      default:
+        return "gray";
+    }
+  };
+  const badgeColor = getPriorityBadgeColor(task?.priority);
   return (
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => {
@@ -25,7 +39,12 @@ const TaskCard = ({ task, index }) => {
           >
             <div className="task-info flex">
               <div className="task-no">{task?.name}</div>
-              <div className="task-proprity">{task?.priority}</div>
+              <div
+                className="task-proprity"
+                style={{ backgroundColor: badgeColor }}
+              >
+                {task?.priority}
+              </div>
             </div>
             <div className="task-des flex">
               <div className="task-type">{task?.type}</div>
