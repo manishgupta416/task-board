@@ -1,0 +1,68 @@
+.add-task-container {
+  display: flex;
+  flex-direction: column;
+}
+.sp-even {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.sp-btw {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.pd {
+  width: 100%;
+  padding: 10px;
+}
+.btn {
+  border-radius: 8px;
+  border: 2px solid;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+.btn-sv {
+  background-color: rgb(66, 165, 245);
+  color: white;
+  font-size: large;
+}
+.btn-x {
+  background-color: rgb(171, 71, 188);
+  color: white;
+  font-size: large;
+}
+.btn-add {
+  background-color: rgb(255, 167, 38);
+  color: white;
+  padding: 8px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+.spn-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: larger;
+}

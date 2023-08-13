@@ -5,6 +5,8 @@ import { DataContext } from "../../context/DataContext";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import AddTask from "../../components/TaskCard/AddTask/AddTask";
 const TaskBoard = () => {
   const {
     dataState,
@@ -142,6 +144,11 @@ const TaskBoard = () => {
   const getStyle = (title) => {
     return getPriorityBadgeColor(title);
   };
+
+  const [showTaskPopup, setShowTaskPopup] = useState(false);
+  const handleAddTask = () => {
+    setShowTaskPopup(!showTaskPopup);
+  };
   return (
     <div
       className="main-container"
@@ -155,7 +162,14 @@ const TaskBoard = () => {
           </span>
         </div>
         <div className="spbtw">
-          <div>
+          <div className="flx ">
+            <span onClick={handleAddTask} className="spn-btn btn-add">
+              <FaPlus />
+              Add Task
+            </span>
+            {showTaskPopup && (
+              <AddTask onClose={() => setShowTaskPopup(false)} />
+            )}
             <input
               type="text"
               className="inp"
