@@ -37,6 +37,11 @@ const TaskCard = ({ task, index }) => {
     setShowMenu(false);
     setShowEditPopup(true);
   };
+
+  const handleDeleteTask = (taskId) => {
+    dataDispatch({ type: "deleteTask", payload: taskId });
+    setShowMenu(false);
+  };
   return (
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => {
@@ -91,6 +96,12 @@ const TaskCard = ({ task, index }) => {
                         style={{ cursor: "pointer", marginBottom: "8px" }}
                       >
                         Edit
+                      </li>
+                      <li
+                        onClick={() => handleDeleteTask(task.id)}
+                        style={{ cursor: "pointer", marginBottom: "8px" }}
+                      >
+                        Delete
                       </li>
                     </ul>
                   </div>

@@ -58,16 +58,16 @@ const AddTask = ({ onClose }) => {
       ) {
         dataDispatch({ type: "addTask", payload: taskDetails });
         onClose();
+      } else {
+        alert("Please enter in all input fields ");
       }
-      alert("Please enter in all input fields ");
     }
   };
   useEffect(() => {
-    const taskData = dataState.data?.find(
-      (task) => dataState.taskId.toString() === task.id.toString()
-    );
-    console.log(taskData, "taskkkk");
-    if (dataState.taskId) {
+    if (dataState?.taskId) {
+      const taskData = dataState.data?.find(
+        (task) => dataState.taskId?.toString() === task.id?.toString()
+      );
       setTaskDetails(taskData);
     }
   }, [dataState.taskId]);

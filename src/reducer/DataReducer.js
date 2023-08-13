@@ -1,6 +1,6 @@
 export const initialState = {
   data: [],
-  taskId: null,
+  taskId: "",
 };
 
 export const DataReducer = (state, action) => {
@@ -20,6 +20,13 @@ export const DataReducer = (state, action) => {
         data: state.data.map((task) =>
           task.id === state.taskId ? { ...action.payload } : task
         ),
+      };
+
+    case "deleteTask":
+      console.log(action.payload, "dell");
+      return {
+        ...state,
+        data: state.data.filter((task) => task.id !== action.payload),
       };
 
     default:
