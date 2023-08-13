@@ -1,6 +1,8 @@
 .add-task-container {
   display: flex;
   flex-direction: column;
+  font-size: larger;
+  color: blue;
 }
 .sp-even {
   display: flex;
