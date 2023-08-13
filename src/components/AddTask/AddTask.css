@@ -84,3 +84,8 @@
     flex-direction: column;
   }
 }
+@media screen and (max-width: 300px) {
+  .pd {
+    padding: 0;
+  }
+}
