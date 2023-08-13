@@ -19,7 +19,6 @@ const App = () => {
         pauseOnHover
         theme="light"
       />
-      ;
       <Routes>
         <Route path="/" element={<TaskBoard />} />
       </Routes>
