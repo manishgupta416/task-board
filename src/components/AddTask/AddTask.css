@@ -68,3 +68,19 @@
   gap: 5px;
   font-size: larger;
 }
+
+@media screen and (max-width: 655px) {
+  .pop-width {
+    width: 50%;
+    overflow-y: scroll;
+  }
+  .sp-even {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex-inp-column {
+    display: flex;
+    flex-direction: column;
+  }
+}

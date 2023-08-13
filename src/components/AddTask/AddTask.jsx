@@ -114,8 +114,8 @@ const AddTask = ({ onClose }) => {
   }, [dataState.taskId]);
   return (
     <div className=" add-task-container popup-background">
-      <div className=" popup-content">
-        <div className="flx-row">
+      <div className=" popup-content pop-width">
+        <div className="flx-row flex-inp-column">
           <div className="flx-col pd">
             <div className="sp-even  pd">
               <div>
@@ -282,7 +282,7 @@ const AddTask = ({ onClose }) => {
 
         <div className="flx-col pd">
           {" "}
-          <div className="sp-btw">
+          <div className="sp-btw sp-even">
             <div>
               <label htmlFor="summary">Summary </label>
             </div>
@@ -299,7 +299,7 @@ const AddTask = ({ onClose }) => {
           </div>
         </div>
         <div className="flx-col pd">
-          <div className="sp-btw">
+          <div className="sp-btw sp-even">
             <button className="btn btn-sv cursor" onClick={handleAddTask}>
               Save
             </button>
