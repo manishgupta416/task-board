@@ -4,6 +4,9 @@ import { Draggable } from "react-beautiful-dnd";
 import { DataContext } from "../../context/DataContext";
 import { CiMenuKebab } from "react-icons/ci";
 import AddTask from "../AddTask/AddTask";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const TaskCard = ({ task, index }) => {
   const {
     dataState,
@@ -41,6 +44,16 @@ const TaskCard = ({ task, index }) => {
   const handleDeleteTask = (taskId) => {
     dataDispatch({ type: "deleteTask", payload: taskId });
     setShowMenu(false);
+    toast.success("Task deleted!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./AddTask.css";
 import { v4 as uuidv4 } from "uuid";
 import { DataContext } from "../../context/DataContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddTask = ({ onClose }) => {
   const { dataState, dataDispatch } = useContext(DataContext);
@@ -38,10 +40,30 @@ const AddTask = ({ onClose }) => {
         taskDetails.priority !== "")
       ) {
         dataDispatch({ type: "editTask", payload: taskDetails });
+        toast.success("Task Updated Sucessfully!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         onClose();
         dataDispatch({ type: "editTaskId", payload: null });
       } else {
-        alert("Please enter in all input fields ");
+        // alert("Please enter in all input fields ");
+        toast.warn("Please enter in all input fields ", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } else {
       //add new task
@@ -57,9 +79,28 @@ const AddTask = ({ onClose }) => {
         taskDetails.priority !== "")
       ) {
         dataDispatch({ type: "addTask", payload: taskDetails });
+        toast.success("Task Added Sucessfully!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         onClose();
       } else {
-        alert("Please enter in all input fields ");
+        toast.warn("Please enter in all input fields ", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     }
   };
