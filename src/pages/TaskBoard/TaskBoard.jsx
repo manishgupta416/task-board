@@ -6,7 +6,9 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
+import { AiOutlineBarChart } from "react-icons/ai";
 import AddTask from "../../components/AddTask/AddTask";
+import TaskMetrices from "../../components/TaskMetrices/TaskMetrices";
 const TaskBoard = () => {
   const {
     dataState,
@@ -26,7 +28,13 @@ const TaskBoard = () => {
   const [searchInput, setSearchInput] = useState("");
   const [priorityValue, setPriorityValue] = useState("");
   const [assigneeValue, setAssigneeValue] = useState("");
-
+  //to store col data
+  const [colData, setColData] = useState({
+    ready: [],
+    testing: [],
+    inProgress: [],
+    done: [],
+  });
   useEffect(() => {
     const filteredTasks = {
       Ready: dataState?.data?.filter((task) => task?.status === "Ready"),
@@ -36,7 +44,13 @@ const TaskBoard = () => {
       Testing: dataState?.data?.filter((task) => task?.status === "Testing"),
       Done: dataState?.data?.filter((task) => task?.status === "Done"),
     };
-
+    setColData({
+      ...colData,
+      ready: filteredTasks.Ready,
+      done: filteredTasks.Done,
+      testing: filteredTasks.Testing,
+      inProgress: filteredTasks.InProgress,
+    });
     const updatedColumns = {
       ...columns,
       Ready: {
@@ -149,6 +163,29 @@ const TaskBoard = () => {
   const handleAddTask = () => {
     setShowTaskPopup(!showTaskPopup);
   };
+
+  const sendColData = (colname) => {
+    switch (colname) {
+      case "Ready":
+        return colData.ready;
+      case "Done":
+        return colData.done;
+      case "Testing":
+        return colData.testing;
+      case "In Progress":
+        return colData.inProgress;
+      default:
+      // return "gray";
+    }
+  };
+  const [colname, setColname] = useState([]);
+  const [showChart, setShowChart] = useState(false);
+  const handleColname = (colnm) => {
+    console.log(colnm, "aaaaaaaaaaa");
+    const name = sendColData(colnm);
+    setColname(name);
+    setShowChart(true);
+  };
   return (
     <div
       className="main-container"
@@ -212,7 +249,9 @@ const TaskBoard = () => {
           </div>
         </div>
       </div>
-
+      {colname.length !== 0 && showChart && (
+        <TaskMetrices column={colname} onClose={() => setShowChart(false)} />
+      )}
       <div className="layout">
         <div className="col">
           <DragDropContext
@@ -231,8 +270,12 @@ const TaskBoard = () => {
                       borderBottom: `4px solid ${getStyle(column.title)} `,
                       color: `${getStyle(column.title)} `,
                     }}
+                    onClick={() => handleColname(column.title)}
                   >
-                    {column.title} ({column.task.length})
+                    {column.title} ({column.task.length}){" "}
+                    <span className="cursor">
+                      <AiOutlineBarChart />
+                    </span>
                   </h2>
                   <div>
                     <Droppable
