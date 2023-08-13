@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./AddTask.css";
 import { v4 as uuidv4 } from "uuid";
 import { DataContext } from "../../context/DataContext";
@@ -19,26 +19,58 @@ const AddTask = ({ onClose }) => {
   });
   console.log(taskDetails);
   const handleClose = () => {
+    dataDispatch({ type: "editTaskId", payload: null });
     onClose();
   };
 
   const handleAddTask = () => {
-    if (
-      (taskDetails.name !== "",
-      taskDetails.type !== "",
-      taskDetails.assignee !== "",
-      taskDetails.status !== "",
-      taskDetails.effortSpent !== "",
-      taskDetails.startDate !== "",
-      taskDetails.endDate !== "",
-      taskDetails.summary !== "",
-      taskDetails.priority !== "")
-    ) {
-      dataDispatch({ type: "addTask", payload: taskDetails });
-      onClose();
+    if (dataState.taskId) {
+      //edit existing task
+      if (
+        (taskDetails.name !== "",
+        taskDetails.type !== "",
+        taskDetails.assignee !== "",
+        taskDetails.status !== "",
+        taskDetails.effortSpent !== "",
+        taskDetails.startDate !== "",
+        taskDetails.endDate !== "",
+        taskDetails.summary !== "",
+        taskDetails.priority !== "")
+      ) {
+        dataDispatch({ type: "editTask", payload: taskDetails });
+        onClose();
+        dataDispatch({ type: "editTaskId", payload: null });
+      } else {
+        alert("Please enter in all input fields ");
+      }
+    } else {
+      //add new task
+      if (
+        (taskDetails.name !== "",
+        taskDetails.type !== "",
+        taskDetails.assignee !== "",
+        taskDetails.status !== "",
+        taskDetails.effortSpent !== "",
+        taskDetails.startDate !== "",
+        taskDetails.endDate !== "",
+        taskDetails.summary !== "",
+        taskDetails.priority !== "")
+      ) {
+        dataDispatch({ type: "addTask", payload: taskDetails });
+        onClose();
+      }
+      alert("Please enter in all input fields ");
     }
-    alert("Please enter in all input fields ");
   };
+  useEffect(() => {
+    const taskData = dataState.data?.find(
+      (task) => dataState.taskId.toString() === task.id.toString()
+    );
+    console.log(taskData, "taskkkk");
+    if (dataState.taskId) {
+      setTaskDetails(taskData);
+    }
+  }, [dataState.taskId]);
   return (
     <div className=" add-task-container popup-background">
       <div className=" popup-content">
