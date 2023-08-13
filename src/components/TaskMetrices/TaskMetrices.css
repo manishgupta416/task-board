@@ -1,0 +1,10 @@
+@media screen and (max-width: 400px) {
+  .graph-popup {
+    width: 50%;
+    height: 50vh;
+  }
+  .canvas {
+    width: 100%;
+    height: 100%;
+  }
+}

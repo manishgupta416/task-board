@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import { DataContext } from "../../context/DataContext";
+import "./TaskMetrices.css";
+
 Chart.register(...registerables);
 
 const TaskMetrices = ({ column, onClose }) => {
@@ -45,11 +46,12 @@ const TaskMetrices = ({ column, onClose }) => {
   };
   return (
     <div className="popup-background">
-      <div className="popup-content">
+      <div className="popup-content graph-popup">
         <button className="btn btn-sv" onClick={handleClose}>
           X
         </button>
         <Bar
+          className="canvas"
           data={state}
           options={{
             title: {
