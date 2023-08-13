@@ -6,7 +6,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
-import AddTask from "../../components/TaskCard/AddTask/AddTask";
+import AddTask from "../../components/AddTask/AddTask";
 const TaskBoard = () => {
   const {
     dataState,

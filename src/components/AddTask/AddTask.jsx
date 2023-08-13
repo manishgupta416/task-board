@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./AddTask.css";
 import { v4 as uuidv4 } from "uuid";
-import { DataContext } from "../../../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 
 const AddTask = ({ onClose }) => {
   const { dataState, dataDispatch } = useContext(DataContext);
