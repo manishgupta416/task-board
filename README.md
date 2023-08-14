@@ -38,6 +38,7 @@ Task Board is a web-application which allow users to manage tasks, User can add 
 - I will add a sidebar menu.
 - I will try to make the UI similar to the Gmail interface.
 - I will add user authentication.
+- I will add Infinite Scrolling.
 - I will fix any bugs that this application may have.
 
 ## About Challenges I faced
