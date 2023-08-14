@@ -22,7 +22,6 @@ const TaskMetrices = ({ column, onClose }) => {
     { high: 0, medium: 0, low: 0, totalEffort: 0 }
   );
 
-  console.log(priorityCounts, "ppppppppp");
   const state = {
     labels: ["Total Task", "High", "Medium", "low", "Total Effort Spent"],
     datasets: [

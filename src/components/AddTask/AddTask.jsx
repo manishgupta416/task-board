@@ -53,7 +53,6 @@ const AddTask = ({ onClose }) => {
         onClose();
         dataDispatch({ type: "editTaskId", payload: null });
       } else {
-        // alert("Please enter in all input fields ");
         toast.warn("Please enter in all input fields ", {
           position: "bottom-right",
           autoClose: 5000,
@@ -131,7 +130,7 @@ const AddTask = ({ onClose }) => {
                   value={taskDetails.name}
                 />
               </div>
-            </div>{" "}
+            </div>
             <div className="sp-even  pd">
               <div>
                 <label htmlFor="assignee">Assignee</label>
@@ -149,16 +148,13 @@ const AddTask = ({ onClose }) => {
                   value={taskDetails.assignee}
                 />
               </div>
-            </div>{" "}
+            </div>
             <div className="">
-              {" "}
               <div className="sp-even  pd">
                 <div>
                   <label htmlFor="status">Status</label>
                 </div>
-
                 <div>
-                  {" "}
                   <select
                     className="cursor"
                     required
@@ -179,10 +175,8 @@ const AddTask = ({ onClose }) => {
               </div>
             </div>
             <div className="">
-              {" "}
               <div className="sp-even  pd">
                 <div>
-                  {" "}
                   <label htmlFor="priority">Priority</label>
                 </div>
                 <select
@@ -204,7 +198,6 @@ const AddTask = ({ onClose }) => {
             </div>
           </div>
           <div className="flx-col pd">
-            {" "}
             <div className="sp-even  pd">
               <div>
                 <label htmlFor="type">Type</label>
@@ -218,11 +211,10 @@ const AddTask = ({ onClose }) => {
                   }
                   value={taskDetails.type}
                 />
-              </div>{" "}
+              </div>
             </div>
             <div className="sp-even  pd">
               <div>
-                {" "}
                 <label htmlFor="effort-spnt">Effort </label>
               </div>
               <div>
@@ -238,7 +230,7 @@ const AddTask = ({ onClose }) => {
                   value={taskDetails.effortSpent}
                 />
               </div>
-            </div>{" "}
+            </div>
             <div className="sp-even  pd">
               <div>
                 <label htmlFor="start-date">Start Date</label>
@@ -261,7 +253,6 @@ const AddTask = ({ onClose }) => {
             </div>
             <div className="sp-even pd">
               <div>
-                {" "}
                 <label htmlFor="end-date">End Date</label>
               </div>
               <div>
@@ -281,7 +272,6 @@ const AddTask = ({ onClose }) => {
         </div>
 
         <div className="flx-col pd">
-          {" "}
           <div className="sp-btw sp-even">
             <div>
               <label htmlFor="summary">Summary </label>

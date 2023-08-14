@@ -112,10 +112,6 @@ const TaskBoard = () => {
       const destItems = [...destColumn.task];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);
-      console.log("s", sourceColumn);
-      console.log("d", destColumn);
-      console.log("si", sourceItems);
-      console.log("d", destItems);
       setColumns({
         ...columns,
         [source.droppableId]: {
@@ -141,7 +137,6 @@ const TaskBoard = () => {
       });
     }
   };
-  console.log(columns);
 
   const filterTasks = (tasks, searchValue, priorityValue, assigneeValue) => {
     return tasks.filter(
@@ -154,7 +149,6 @@ const TaskBoard = () => {
     );
   };
 
-  console.log(filterTasks);
   const getStyle = (title) => {
     return getPriorityBadgeColor(title);
   };
@@ -181,7 +175,6 @@ const TaskBoard = () => {
   const [colname, setColname] = useState([]);
   const [showChart, setShowChart] = useState(false);
   const handleColname = (colnm) => {
-    console.log(colnm, "aaaaaaaaaaa");
     const name = sendColData(colnm);
     setColname(name);
     setShowChart(true);

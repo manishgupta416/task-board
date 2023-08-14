@@ -8,14 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TaskCard = ({ task, index }) => {
-  const {
-    dataState,
-    handleDarkMode,
-    theme,
-    isDarkMode,
-    dataDispatch,
-    getPriorityBadgeColor,
-  } = useContext(DataContext);
+  const { theme, isDarkMode, dataDispatch, getPriorityBadgeColor } =
+    useContext(DataContext);
   const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: "none",
     padding: "10px",
@@ -70,7 +64,7 @@ const TaskCard = ({ task, index }) => {
                 provided.draggableProps.style
               ),
               backgroundColor: cardColor,
-              color: isDarkMode ? theme.text : "white", // Call a function to get the appropriate color based on taskState
+              color: isDarkMode ? theme.text : "white",
             }}
           >
             <div className="menu-btn cursor" onClick={handlePopup}>
@@ -83,7 +77,6 @@ const TaskCard = ({ task, index }) => {
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    // background: "rgba(0, 0, 0, 0.5)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
