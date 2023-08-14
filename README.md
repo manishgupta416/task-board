@@ -8,7 +8,7 @@
 
 ## About
 
-Task Board is a web-application which allow users to manage tasks, User can add new task , edit existing task , delete task, and drag and drop functionality to group tasks into different stages (Ready, In Progress, Testing, Done).
+Task Board is a web-application which allow users to manage tasks, User can add new task , edit existing task , delete task, and drag and drop functionality to group tasks into different stages (Ready, In Progress, Testing, Done).Also User can see visual metrics of each group
 
 ## 🚀 Live Link
 
@@ -22,17 +22,23 @@ Task Board is a web-application which allow users to manage tasks, User can add 
 - User can edit existing task.
 - User can delete task.
 - User can drag and drop task anywhere .
-- Search functionality is also implemented user can find task by task name.
-- User can also Filter task by category, priority and assignee.
+- User can see visual metrics bar chart of each group ( like total number of task in that group, total no of high, medium and low priority task and total effort spent in that group).
+- Search functionality is implemented user can find task by task name.
+- User can Filter task by priority and assignee.
+- Badges color is added to each task based on priority (High/Medium/Low).
 - Dark mode is also implement , user can switch light mode to dark and vice versa.
 
 ### Toasts
 
 - User can see acknowledgement alerts for various actions such as added new task, task edited successfully, task deleted etc.
 
+<!-- ## Improvement and upcoming features
+
+-  -->
+
 ## Technologies Used
 
-- Frontend : React Js , React Context API + useReducer , useState , React Router , Vanilla CSS
+- Frontend : React Js , React Context API + useReducer , useState , React Router , Vanilla CSS , react-beautiful-dnd , react-chartjs-2 chart.js
 
 ## Getting Started
 
