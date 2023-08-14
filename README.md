@@ -8,13 +8,13 @@
 
 ## About
 
-Task Board is a web-application which allow users to manage tasks, User can add new task , edit existing task , delete task, and drag and drop functionality to group tasks into different stages (Ready, In Progress, Testing, Done).Also User can see visual metrics of each group
+Task Board is a web-application which allow users to manage tasks, User can add new task , edit existing task , delete task, and drag and drop functionality to group tasks into different stages (Ready, In Progress, Testing, Done). Also User can see visual metrics of each group.
 
 ## 🚀 Live Link
 
 - [Task Board](https://task-board-v1.netlify.app/)
 
-## Features
+## Features (Usecases)
 
 ### Task Board Layout Page
 
@@ -32,9 +32,23 @@ Task Board is a web-application which allow users to manage tasks, User can add 
 
 - User can see acknowledgement alerts for various actions such as added new task, task edited successfully, task deleted etc.
 
-<!-- ## Improvement and upcoming features
+## About Improvement and Feature Enhancement
 
--  -->
+- I will polish the user interface to offer a more intuitive and visually appealing experience to user.
+- I will add a sidebar menu.
+- I will try to make the UI similar to the Gmail interface.
+- I will add user authentication.
+- I will fix any bugs that this application may have.
+
+## About Challenges I faced
+
+- One of the significant challenges I encountered was during the implementation of the drag and drop feature, which I had never worked with before. I got stuck for an extended period, struggling to identify why I couldn't achieve the drag and drop functionality. I consistently encountered an error message stating **"Cannot find 'droppable' and 'draggable' entry IDs."** With the help of stackover flow forum, I was able to resolve this issue. The root cause turned out to be the usage of React's strict mode, which was causing the problem.
+
+- Another challenge arose when I was implementing the task metrics feature, implementing react charts for the first time. Initially, I needed some time to grasp how I could accomplish this task. To overcome this, I decided to break down the process into smaller parts and then carefully understand the flow of data and rendering. Once I had a clear understanding of the flow, the implementation process became easier.
+
+## About Design decisions
+
+- Initially, I began with a simple UI layout consisting of heading and four columns as per to achieve requirements first. Once I successfully implemented the drag and drop functionality, I took design inspiration from the provided image. I aimed to create a similar look with my unique touch. This involved layout styling , colors , element positioning to achieve the similar kind of UI.
 
 ## Technologies Used
 
@@ -60,7 +74,7 @@ Contributions are welcome! To contribute to the project, follow these steps:
 
 ## Contact
 
-For any questions or feedback, please contact [Your Name]`(https://github.com/manishgupta416/).`
+For any questions or feedback, please contact [Manish Kumar]`(https://github.com/manishgupta416/).`
 
 <h3 align="center">Connect with me 🤝 </h3>
 <div align="center">
