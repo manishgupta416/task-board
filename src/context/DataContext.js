@@ -39,6 +39,8 @@ export const DataProvider = ({ children }) => {
         return "#1976D2";
       case "In Progress":
         return "#FFA726";
+      case "InProgress":
+        return "#FFA726";
       case "Testing":
         return "#AB47BC";
       default:

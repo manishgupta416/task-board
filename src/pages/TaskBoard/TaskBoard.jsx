@@ -110,8 +110,16 @@ const TaskBoard = () => {
       const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.task];
       const destItems = [...destColumn.task];
-      const [removed] = sourceItems.splice(source.index, 1);
-      destItems.splice(destination.index, 0, removed);
+      const [removedItem] = sourceItems.splice(source.index, 1);
+      removedItem.status = destination.droppableId;
+
+      const updatedDestItems = destItems.map((item, index) =>
+        index === destination.index
+          ? { ...item, status: destination.droppableId }
+          : item
+      );
+
+      updatedDestItems.splice(destination.index, 0, removedItem);
       setColumns({
         ...columns,
         [source.droppableId]: {
@@ -120,19 +128,27 @@ const TaskBoard = () => {
         },
         [destination.droppableId]: {
           ...destColumn,
-          task: destItems,
+          task: updatedDestItems,
         },
       });
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.task];
-      const [removed] = copiedItems.splice(source.index, 1);
-      copiedItems.splice(destination.index, 0, removed);
+      const [removedItem] = copiedItems.splice(source.index, 1);
+      removedItem.status = source.droppableId;
+
+      const updatedDestItems = copiedItems.map((item, index) =>
+        index === destination.index
+          ? { ...item, status: destination.droppableId }
+          : item
+      );
+
+      updatedDestItems.splice(destination.index, 0, removedItem);
       setColumns({
         ...columns,
         [source.droppableId]: {
           ...column,
-          task: copiedItems,
+          task: updatedDestItems,
         },
       });
     }
