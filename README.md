@@ -21,7 +21,7 @@ Task Board is a web-application which allow users to manage tasks, User can add 
 - User can create new task.
 - User can edit existing task.
 - User can delete task.
-- User can drag and drop task anywhere .
+- Drag and Drop tasks anywhere into different stages (Ready, In Progress, Testing, Done).
 - User can see visual metrics bar chart of each group ( like total number of task in that group, total no of high, medium and low priority task and total effort spent in that group).
 - Search functionality is implemented user can find task by task name.
 - User can Filter task by priority and assignee.
@@ -32,24 +32,24 @@ Task Board is a web-application which allow users to manage tasks, User can add 
 
 - User can see acknowledgement alerts for various actions such as added new task, task edited successfully, task deleted etc.
 
-## About Improvement and Feature Enhancement
+<!-- ## About Improvement and Feature Enhancement
 
 - I will polish the user interface to offer a more intuitive and visually appealing experience to user.
 - I will add a sidebar menu.
 - I will try to make the UI similar to the Gmail interface.
 - I will add user authentication.
 - I will add Infinite Scrolling.
-- I will fix any bugs that this application may have.
+- I will fix any bugs that this application may have. -->
 
-## About Challenges I faced
+<!-- ## About Challenges I faced
 
-- One of the significant challenges I encountered was during the implementation of the drag and drop feature, which I had never worked with before. I got stuck for an extended period, struggling to identify why I couldn't achieve the drag and drop functionality. I consistently encountered an error message stating **"Cannot find 'droppable' and 'draggable' entry IDs."** With the help of stackover flow forum, I was able to resolve this issue. The root cause turned out to be the usage of React's strict mode, which was causing the problem.
+- One of the significant challenges I encountered was during the implementation of the drag and drop feature, which I had never worked with before. I got stuck for an extended period, struggling to identify why I couldn't achieve the drag and drop functionality. I consistently encountered an error message stating **"Cannot find 'droppable' and 'draggable' entry IDs."** With the help of stackover flow forum, I was able to resolve this issue. The root cause turned out to be the usage of React's strict mode, which was causing the problem. -->
 
-- Another challenge arose when I was implementing the task metrics feature, implementing react charts for the first time. Initially, I needed some time to grasp how I could accomplish this task. To overcome this, I decided to break down the process into smaller parts and then carefully understand the flow of data and rendering. Once I had a clear understanding of the flow, the implementation process became easier.
+<!-- - Another challenge arose when I was implementing the task metrics feature, implementing react charts for the first time. Initially, I needed some time to grasp how I could accomplish this task. To overcome this, I decided to break down the process into smaller parts and then carefully understand the flow of data and rendering. Once I had a clear understanding of the flow, the implementation process became easier. -->
 
-## About Design decisions
+<!-- ## About Design decisions
 
-- Initially, I began with a simple UI layout consisting of heading and four columns as per to achieve requirements first. Once I successfully implemented the drag and drop functionality, I took design inspiration from the provided image. I aimed to create a similar look with my unique touch. This involved layout styling , colors , element positioning to achieve the similar kind of UI.
+- Initially, I began with a simple UI layout consisting of heading and four columns as per to achieve requirements first. Once I successfully implemented the drag and drop functionality, I took design inspiration from the provided image. I aimed to create a similar look with my unique touch. This involved layout styling , colors , element positioning to achieve the similar kind of UI. -->
 
 ## Technologies Used
 
