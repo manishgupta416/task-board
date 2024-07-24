@@ -1,4 +1,5 @@
 import axios from "axios";
+import { data } from "../data/data";
 
 export const getAllTask = async (dataDispatch) => {
   try {
@@ -7,7 +8,7 @@ export const getAllTask = async (dataDispatch) => {
     });
     if (response.status === 200) {
       console.log(response.data);
-      dataDispatch({ type: "getAllTask", payload: response.data });
+      dataDispatch({ type: "getAllTask", payload: data });
     }
   } catch (error) {
     console.error(error);
